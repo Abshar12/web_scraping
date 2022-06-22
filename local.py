@@ -11,16 +11,22 @@ content = BeautifulSoup (r.content , 'html.parser')
 
 name = content.find_all('div',{"class":"_4rR01T"})
 price = content.find_all('div',{"class":"_30jeq3 _1_WHN1"})
+rating = content.find_all('div' , {"class":"_3LWZlK"})
 print (name[0])
 print (price[0])
+print (rating[0])
 
 nm=[]
 pr=[]
+rt=[]
 for i in name:
     nm.append(i.text)
 for j in price:
     pr.append(j.text)
+for k in range (len(nm)):
+    rt.append(rating[k].text)
 
-data = {'name':nm , 'price':pr}
+
+data = {'NAME':nm , 'PRICE':pr , 'RATING':rt}
 df = pd.DataFrame(data)
 print (df)
